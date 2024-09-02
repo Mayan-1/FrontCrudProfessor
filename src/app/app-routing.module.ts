@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NavBarComponent } from './navbar/nav-bar.component';
+import { CadastroProfessorComponent } from './cadastro-professor/cadastro-professor.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'cadastro',
+    component: NavBarComponent,
+    children: [{ path: '', component: CadastroProfessorComponent }],
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

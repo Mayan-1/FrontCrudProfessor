@@ -1,0 +1,31 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.nav-bar {
+  height: 100px;
+}
+.nav-item {
+  margin-right: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  color: white;
+  font-size: 16px;
+  padding: 5px 8px;
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
+}
+
+.nav-item:hover {
+  background-color: #377afe;
+  transform: scale(1.1);
+  border-radius: 10px;
+}
+
+.logo {
+  height: 80px;
+}
+
+.bg-color-nav {
+  background-color: #1248b2;
+}

@@ -1,0 +1,78 @@
+<mat-grid-list
+  cols="2"
+  [rowHeight]="90"
+  class="custom-grid-list"
+  gutterSize="5"
+>
+  <mat-grid-tile>
+    <mat-form-field class="custom-form-field" appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput type="text" />
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-form-field class="custom-form-field" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput />
+      <mat-icon matSuffix>mail</mat-icon>
+    </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile
+    ><mat-form-field class="custom-form-field" appearance="outline">
+      <mat-label>Confirme o email</mat-label>
+      <input matInput />
+      <mat-icon matSuffix>mail</mat-icon>
+    </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-form-field class="custom-form-field" appearance="outline">
+      <mat-label>Senha</mat-label>
+      <input matInput placeholder="" />
+      <mat-icon matSuffix>password</mat-icon>
+    </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-form-field class="custom-form-field" appearance="outline">
+      <mat-label>Confirme a senha</mat-label>
+      <input matInput placeholder="" />
+      <mat-icon matSuffix>password</mat-icon>
+    </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-form-field class="custom-form-field" appearance="outline">
+      <mat-label>Telefone</mat-label>
+      <input matInput class="form-control" mask="(00) 00000-0000" />
+      <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-form-field class="custom-form-field" appearance="outline">
+      <mat-label>Cpf</mat-label>
+      <input matInput class="form-control" mask="000.000.000-00" />
+      <mat-icon matSuffix>verified_user</mat-icon>
+    </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-form-field class="custom-form-field" appearance="outline">
+      <mat-label>Matéria</mat-label>
+      <input matInput />
+      <mat-icon matSuffix>book</mat-icon>
+    </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <button mat-raised-button class="custom-button-cadastrar">Cadastrar</button>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <button mat-raised-button class="custom-button-cancelar">Cancelar</button>
+  </mat-grid-tile>
+</mat-grid-list>
