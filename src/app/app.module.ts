@@ -6,6 +6,7 @@ import { NavBarModule } from './navbar/nav-bar.module';
 import { FooterModule } from './footer/footer.module';
 import { CadastroProfessorModule } from './cadastro-professor/cadastro-professor.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { SucessDialogModule } from './success-dialog/sucess-dialog.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +17,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     FooterModule,
     CadastroProfessorModule,
     NoopAnimationsModule,
+    SucessDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

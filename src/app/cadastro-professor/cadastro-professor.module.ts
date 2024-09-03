@@ -11,6 +11,11 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProfessorService } from '../services/professor.service';
+import { MatDialogModule } from '@angular/material/dialog';
+import { SucessDialogModule } from '../success-dialog/sucess-dialog.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 @NgModule({
   declarations: [CadastroProfessorComponent],
   imports: [
@@ -24,6 +29,10 @@ import { ProfessorService } from '../services/professor.service';
     RouterModule,
     FormsModule,
     HttpClientModule,
+    MatDialogModule,
+    SucessDialogModule,
+    ReactiveFormsModule,
+    MatTooltipModule,
   ],
   providers: [provideNgxMask(), ProfessorService],
   exports: [CadastroProfessorComponent],

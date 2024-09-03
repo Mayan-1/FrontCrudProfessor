@@ -1,78 +1,184 @@
-<mat-grid-list
-  cols="2"
-  [rowHeight]="90"
-  class="custom-grid-list"
-  gutterSize="5"
->
-  <mat-grid-tile>
-    <mat-form-field class="custom-form-field" appearance="outline">
-      <mat-label>Nome</mat-label>
-      <input matInput type="text" />
-      <mat-icon matSuffix>person</mat-icon>
-    </mat-form-field>
-  </mat-grid-tile>
+<form [formGroup]="cadastroProfessorForm" (ngSubmit)="criarProfessor()">
+  <mat-grid-list
+    cols="2"
+    [rowHeight]="90"
+    class="custom-grid-list"
+    gutterSize="5"
+  >
+    <mat-grid-tile>
+      <mat-form-field class="custom-form-field" appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="professorNome"
+          matTooltip="O nome deve conter no mínimo 3 caracteres"
+        />
+        <mat-error
+          *ngIf="
+            cadastroProfessorForm.get('professorNome')!.hasError('required')
+          "
+        >
+          Por favor, preencha o nome.
+        </mat-error>
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+    </mat-grid-tile>
 
-  <mat-grid-tile>
-    <mat-form-field class="custom-form-field" appearance="outline">
-      <mat-label>Email</mat-label>
-      <input matInput />
-      <mat-icon matSuffix>mail</mat-icon>
-    </mat-form-field>
-  </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="custom-form-field" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          formControlName="professorEmail"
+          matTooltip="exemplo@exemplo.com"
+        />
+        <mat-error
+          *ngIf="
+            cadastroProfessorForm.get('professorEmail')!.hasError('required')
+          "
+        >
+          Por favor, preencha o campo de email.
+        </mat-error>
+        <mat-error
+          *ngIf="cadastroProfessorForm.get('professorEmail')!.hasError('email')"
+        >
+          Por favor, digite um email válido.
+        </mat-error>
+        <mat-icon matSuffix>mail</mat-icon>
+      </mat-form-field>
+    </mat-grid-tile>
 
-  <mat-grid-tile
-    ><mat-form-field class="custom-form-field" appearance="outline">
-      <mat-label>Confirme o email</mat-label>
-      <input matInput />
-      <mat-icon matSuffix>mail</mat-icon>
-    </mat-form-field>
-  </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="custom-form-field" appearance="outline">
+        <mat-label>Confirme o email</mat-label>
+        <input
+          matInput
+          type="email"
+          formControlName="confirmacaoEmail"
+          matTooltip="O email deve ser o mesmo do campo anterior"
+        />
+        <mat-error
+          *ngIf="
+            cadastroProfessorForm.get('professorEmail')!.hasError('required')
+          "
+        >
+          Por favor, preencha o campo de email.
+        </mat-error>
+        <mat-error
+          *ngIf="
+            cadastroProfessorForm.get('confirmacaoEmail')!.hasError('equalsTo')
+          "
+        >
+          Por favor, digite o mesmo email do campo anterior.
+        </mat-error>
 
-  <mat-grid-tile>
-    <mat-form-field class="custom-form-field" appearance="outline">
-      <mat-label>Senha</mat-label>
-      <input matInput placeholder="" />
-      <mat-icon matSuffix>password</mat-icon>
-    </mat-form-field>
-  </mat-grid-tile>
+        <mat-icon matSuffix>mail</mat-icon>
+      </mat-form-field>
+    </mat-grid-tile>
 
-  <mat-grid-tile>
-    <mat-form-field class="custom-form-field" appearance="outline">
-      <mat-label>Confirme a senha</mat-label>
-      <input matInput placeholder="" />
-      <mat-icon matSuffix>password</mat-icon>
-    </mat-form-field>
-  </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="custom-form-field" appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input
+          matInput
+          type="password"
+          formControlName="professorSenha"
+          matTooltip="A senha deve conter no mínimo 6 caracteres"
+        />
+        <mat-icon matSuffix>password</mat-icon>
+        <mat-error
+          *ngIf="
+            cadastroProfessorForm.get('professorSenha')!.hasError('required')
+          "
+        >
+          Por favor, preencha o campo de senha.
+        </mat-error>
+        <mat-error
+          *ngIf="
+            cadastroProfessorForm.get('professorSenha')!.hasError('minlength')
+          "
+        >
+          A senha deve conter no mínimo 6 caracteres
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
 
-  <mat-grid-tile>
-    <mat-form-field class="custom-form-field" appearance="outline">
-      <mat-label>Telefone</mat-label>
-      <input matInput class="form-control" mask="(00) 00000-0000" />
-      <mat-icon matSuffix>phone</mat-icon>
-    </mat-form-field>
-  </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="custom-form-field" appearance="outline">
+        <mat-label>Confirme a senha</mat-label>
+        <input
+          matInput
+          type="password"
+          formControlName="confirmacaoSenha"
+          matTooltip="A senha deve ser a mesma do campo anterior"
+        />
+        <mat-error
+          *ngIf="
+            cadastroProfessorForm.get('confirmacaoSenha')!.hasError('equalsTo')
+          "
+        >
+          Por favor, digite a mesma senha do campo anterior.
+        </mat-error>
+        <mat-icon matSuffix>password</mat-icon>
+      </mat-form-field>
+    </mat-grid-tile>
 
-  <mat-grid-tile>
-    <mat-form-field class="custom-form-field" appearance="outline">
-      <mat-label>Cpf</mat-label>
-      <input matInput class="form-control" mask="000.000.000-00" />
-      <mat-icon matSuffix>verified_user</mat-icon>
-    </mat-form-field>
-  </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="custom-form-field" appearance="outline">
+        <mat-label>Telefone</mat-label>
+        <input
+          matInput
+          class="form-control"
+          mask="(00) 00000-0000"
+          formControlName="professorTelefone"
+          matTooltip="(00) 00000-0000"
+        />
+        <mat-icon matSuffix>phone</mat-icon>
+      </mat-form-field>
+    </mat-grid-tile>
 
-  <mat-grid-tile>
-    <mat-form-field class="custom-form-field" appearance="outline">
-      <mat-label>Matéria</mat-label>
-      <input matInput />
-      <mat-icon matSuffix>book</mat-icon>
-    </mat-form-field>
-  </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="custom-form-field" appearance="outline">
+        <mat-label>Cpf</mat-label>
+        <input
+          matInput
+          class="form-control"
+          mask="000.000.000-00"
+          formControlName="professorCpf"
+          matTooltip="000.000.000-00"
+        />
+        <mat-icon matSuffix>verified_user</mat-icon>
+      </mat-form-field>
+    </mat-grid-tile>
 
-  <mat-grid-tile>
-    <button mat-raised-button class="custom-button-cadastrar">Cadastrar</button>
-  </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="custom-form-field" appearance="outline">
+        <mat-label>Matéria</mat-label>
+        <input
+          matInput
+          formControlName="professorMateria"
+          matTooltip="Digite a matéria que o professor ensina"
+        />
+        <mat-icon matSuffix>book</mat-icon>
+      </mat-form-field>
+    </mat-grid-tile>
 
-  <mat-grid-tile>
-    <button mat-raised-button class="custom-button-cancelar">Cancelar</button>
-  </mat-grid-tile>
-</mat-grid-list>
+    <mat-grid-tile>
+      <button mat-raised-button class="custom-button-cadastrar" type="submit">
+        Cadastrar
+      </button>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <button
+        mat-raised-button
+        class="custom-button-cancelar"
+        (click)="limparCampos()"
+      >
+        Cancelar
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>
