@@ -18,6 +18,8 @@ import { MatDialog } from '@angular/material/dialog';
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class CadastroProfessorComponent implements OnInit {
+  hideSenha = true;
+  hideConfirmacao = true;
   cadastroProfessorForm!: FormGroup;
   constructor(
     private professorService: ProfessorService,
@@ -44,7 +46,7 @@ export class CadastroProfessorComponent implements OnInit {
 
   ngOnInit() {
     this.cadastroProfessorForm = this.fb.group({
-      professorNome: ['', Validators.required],
+      professorNome: ['', [Validators.required, Validators.minLength(3)]],
       professorCpf: ['', Validators.required],
       professorEmail: ['', [Validators.required, Validators.email]],
       confirmacaoEmail: [
@@ -55,13 +57,21 @@ export class CadastroProfessorComponent implements OnInit {
           this.equalsTo('professorEmail'),
         ],
       ],
-      professorSenha: ['', [Validators.required, Validators.minLength(6)]],
+      professorSenha: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(15),
+        ],
+      ],
       confirmacaoSenha: [
         '',
         [
           Validators.required,
           Validators.minLength(6),
           this.equalsTo('professorSenha'),
+          Validators.maxLength(15),
         ],
       ],
       professorTelefone: ['', Validators.required],
@@ -77,16 +87,6 @@ export class CadastroProfessorComponent implements OnInit {
 
     const formValues = this.cadastroProfessorForm.value;
 
-    // if (formValues.professorEmail !== formValues.confirmacaoEmail) {
-    //   alert('Os e-mails não coincidem.');
-    //   return;
-    // }
-
-    // if (formValues.professorSenha !== formValues.confirmacaoSenha) {
-    //   alert('As senhas não coincidem.');
-    //   return;
-    // }
-
     this.professorService.criarProfessor(formValues).subscribe(() => {
       this.limparCampos();
       this.abrirDialog();
@@ -100,6 +100,4 @@ export class CadastroProfessorComponent implements OnInit {
   abrirDialog() {
     this.dialog.open(SuccessDialogComponent);
   }
-
-  // Função que valida se o email e a confirmação são iguais
 }

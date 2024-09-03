@@ -1,0 +1,29 @@
+.custom-table {
+  width: 100%;
+  table-layout: auto;
+  margin-top: 50px;
+}
+
+.mat-column-id {
+  width: 5% !important;
+}
+
+.mat-column-nome {
+  width: 20% !important;
+}
+
+.mat-column-cpf,
+.mat-column-email,
+.mat-column-telefone,
+.mat-column-materia {
+  width: 15% !important;
+}
+
+.mat-cell,
+.mat-header-cell {
+  padding: 8px !important;
+}
+
+.mat-row {
+  height: 40px;
+}

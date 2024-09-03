@@ -21,6 +21,13 @@
         >
           Por favor, preencha o nome.
         </mat-error>
+        <mat-error
+          *ngIf="
+            cadastroProfessorForm.get('professorNome')!.hasError('minlength')
+          "
+        >
+          O nome deve conter no mínimo 3 caracteres
+        </mat-error>
         <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
     </mat-grid-tile>
@@ -83,11 +90,20 @@
         <mat-label>Senha</mat-label>
         <input
           matInput
-          type="password"
+          [type]="hideSenha ? 'password' : 'text'"
           formControlName="professorSenha"
           matTooltip="A senha deve conter no mínimo 6 caracteres"
         />
-        <mat-icon matSuffix>password</mat-icon>
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hideSenha = !hideSenha"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hideSenha"
+          type="button"
+        >
+          <mat-icon>{{ hideSenha ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
         <mat-error
           *ngIf="
             cadastroProfessorForm.get('professorSenha')!.hasError('required')
@@ -110,7 +126,7 @@
         <mat-label>Confirme a senha</mat-label>
         <input
           matInput
-          type="password"
+          [type]="hideConfirmacao ? 'password' : 'text'"
           formControlName="confirmacaoSenha"
           matTooltip="A senha deve ser a mesma do campo anterior"
         />
@@ -121,7 +137,27 @@
         >
           Por favor, digite a mesma senha do campo anterior.
         </mat-error>
-        <mat-icon matSuffix>password</mat-icon>
+
+        <mat-error
+          *ngIf="
+            cadastroProfessorForm.get('confirmacaoSenha')!.hasError('required')
+          "
+        >
+          Por favor, preencha o campo de confirmação de senha.
+        </mat-error>
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hideConfirmacao = !hideConfirmacao"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hideConfirmacao"
+          type="button"
+          hideConfirmacao
+        >
+          <mat-icon>{{
+            hideConfirmacao ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
       </mat-form-field>
     </mat-grid-tile>
 
@@ -135,6 +171,13 @@
           formControlName="professorTelefone"
           matTooltip="(00) 00000-0000"
         />
+        <mat-error
+          *ngIf="
+            cadastroProfessorForm.get('professorTelefone')!.hasError('required')
+          "
+        >
+          Por favor, preencha o Telefone.
+        </mat-error>
         <mat-icon matSuffix>phone</mat-icon>
       </mat-form-field>
     </mat-grid-tile>
@@ -149,6 +192,13 @@
           formControlName="professorCpf"
           matTooltip="000.000.000-00"
         />
+        <mat-error
+          *ngIf="
+            cadastroProfessorForm.get('professorCpf')!.hasError('required')
+          "
+        >
+          Por favor, preencha o Cpf.
+        </mat-error>
         <mat-icon matSuffix>verified_user</mat-icon>
       </mat-form-field>
     </mat-grid-tile>
@@ -161,6 +211,13 @@
           formControlName="professorMateria"
           matTooltip="Digite a matéria que o professor ensina"
         />
+        <mat-error
+          *ngIf="
+            cadastroProfessorForm.get('professorMateria')!.hasError('required')
+          "
+        >
+          Por favor, preencha a Matéria.
+        </mat-error>
         <mat-icon matSuffix>book</mat-icon>
       </mat-form-field>
     </mat-grid-tile>
@@ -176,6 +233,7 @@
         mat-raised-button
         class="custom-button-cancelar"
         (click)="limparCampos()"
+        type="button"
       >
         Cancelar
       </button>

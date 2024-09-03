@@ -1,0 +1,147 @@
+<form [formGroup]="edicaoProfessorForm" (ngSubmit)="editarProfessor()">
+  <mat-grid-list
+    cols="2"
+    [rowHeight]="90"
+    class="custom-grid-list"
+    gutterSize="5"
+  >
+    <!-- <mat-grid-tile>
+      <mat-form-field class="custom-form-field" appearance="outline">
+        <mat-label>Id</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="professorId"
+          matTooltip="O nome deve conter no mínimo 3 caracteres"
+        />
+        <mat-icon matSuffix>fingerprint</mat-icon>
+      </mat-form-field>
+    </mat-grid-tile> -->
+    <mat-grid-tile>
+      <mat-form-field class="custom-form-field" appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="professorNome"
+          matTooltip="O nome deve conter no mínimo 3 caracteres"
+        />
+        <mat-error
+          *ngIf="edicaoProfessorForm.get('professorNome')!.hasError('required')"
+        >
+          Por favor, preencha o nome.
+        </mat-error>
+        <mat-error
+          *ngIf="
+            edicaoProfessorForm.get('professorNome')!.hasError('minlength')
+          "
+        >
+          O nome deve conter no mínimo 3 caracteres
+        </mat-error>
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="custom-form-field" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          formControlName="professorEmail"
+          matTooltip="exemplo@exemplo.com"
+        />
+        <mat-error
+          *ngIf="
+            edicaoProfessorForm.get('professorEmail')!.hasError('required')
+          "
+        >
+          Por favor, preencha o campo de email.
+        </mat-error>
+        <mat-error
+          *ngIf="edicaoProfessorForm.get('professorEmail')!.hasError('email')"
+        >
+          Por favor, digite um email válido.
+        </mat-error>
+        <mat-icon matSuffix>mail</mat-icon>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="custom-form-field" appearance="outline">
+        <mat-label>Telefone</mat-label>
+        <input
+          matInput
+          class="form-control"
+          mask="(00) 00000-0000"
+          formControlName="professorTelefone"
+          matTooltip="(00) 00000-0000"
+        />
+        <mat-error
+          *ngIf="
+            edicaoProfessorForm.get('professorTelefone')!.hasError('required')
+          "
+        >
+          Por favor, preencha o Telefone.
+        </mat-error>
+        <mat-icon matSuffix>phone</mat-icon>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="custom-form-field" appearance="outline">
+        <mat-label>Cpf</mat-label>
+        <input
+          matInput
+          class="form-control"
+          mask="000.000.000-00"
+          formControlName="professorCpf"
+          matTooltip="000.000.000-00"
+        />
+        <mat-error
+          *ngIf="edicaoProfessorForm.get('professorCpf')!.hasError('required')"
+        >
+          Por favor, preencha o Cpf.
+        </mat-error>
+        <mat-icon matSuffix>verified_user</mat-icon>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="custom-form-field" appearance="outline">
+        <mat-label>Matéria</mat-label>
+        <input
+          matInput
+          formControlName="professorMateria"
+          matTooltip="Digite a matéria que o professor ensina"
+        />
+        <mat-error
+          *ngIf="
+            edicaoProfessorForm.get('professorMateria')!.hasError('required')
+          "
+        >
+          Por favor, preencha a Matéria.
+        </mat-error>
+        <mat-icon matSuffix>book</mat-icon>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button class="custom-button-editar" type="submit">
+        Editar
+      </button>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <button
+        mat-raised-button
+        class="custom-button-cancelar"
+        (click)="limparCampos()"
+        type="button"
+      >
+        Cancelar
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

@@ -1,8 +1,8 @@
-export interface ProfessorDto {
+export interface ProfessorEdicaoDto {
+  id: number;
   nome: string;
-  email: string;
-  senha: string;
-  telefone: string;
   cpf: string;
+  email: string;
+  telefone: string;
   materia: string;
 }
