@@ -12,7 +12,7 @@ const routes: Routes = [
     children: [{ path: '', component: CadastroProfessorComponent }],
   },
   {
-    path: 'edicao',
+    path: 'editar/:id',
     component: NavBarComponent,
     children: [{ path: '', component: EdicaoProfessorComponent }],
   },

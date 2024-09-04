@@ -85,6 +85,8 @@ export class CadastroProfessorComponent implements OnInit {
       return;
     }
 
+    console.log('chegou aqui');
+
     const formValues = this.cadastroProfessorForm.value;
 
     this.professorService.criarProfessor(formValues).subscribe(() => {

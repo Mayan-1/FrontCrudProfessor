@@ -1,6 +1,6 @@
 <form [formGroup]="cadastroProfessorForm" (ngSubmit)="criarProfessor()">
   <mat-grid-list
-    cols="2"
+    cols="1"
     [rowHeight]="90"
     class="custom-grid-list"
     gutterSize="5"
@@ -31,7 +31,13 @@
         <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
     </mat-grid-tile>
-
+  </mat-grid-list>
+  <mat-grid-list
+    cols="2"
+    [rowHeight]="90"
+    class="custom-grid-list"
+    gutterSize="5"
+  >
     <mat-grid-tile>
       <mat-form-field class="custom-form-field" appearance="outline">
         <mat-label>Email</mat-label>
@@ -160,7 +166,14 @@
         </button>
       </mat-form-field>
     </mat-grid-tile>
+  </mat-grid-list>
 
+  <mat-grid-list
+    cols="3"
+    [rowHeight]="90"
+    class="custom-grid-list"
+    gutterSize="5"
+  >
     <mat-grid-tile>
       <mat-form-field class="custom-form-field" appearance="outline">
         <mat-label>Telefone</mat-label>
@@ -221,7 +234,14 @@
         <mat-icon matSuffix>book</mat-icon>
       </mat-form-field>
     </mat-grid-tile>
+  </mat-grid-list>
 
+  <mat-grid-list
+    cols="2"
+    [rowHeight]="90"
+    class="custom-grid-list"
+    gutterSize="5"
+  >
     <mat-grid-tile>
       <button mat-raised-button class="custom-button-cadastrar" type="submit">
         Cadastrar

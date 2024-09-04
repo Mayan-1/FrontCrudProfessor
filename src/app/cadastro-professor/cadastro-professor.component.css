@@ -12,6 +12,7 @@ mat-grid-tile {
 .custom-form-field {
   width: 100%;
   border-radius: 10px;
+  padding-left: 15px;
 }
 
 .mat-form-field-appearance-outline .mat-form-field-flex {
