@@ -17,7 +17,7 @@ const routes: Routes = [
     children: [{ path: '', component: EdicaoProfessorComponent }],
   },
   {
-    path: '',
+    path: 'home',
     component: NavBarComponent,
     children: [{ path: '', component: ListaProfessoresComponent }],
   },

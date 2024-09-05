@@ -29,3 +29,7 @@
 .bg-color-nav {
   background-color: #1248b2;
 }
+
+a {
+  text-decoration: none;
+}

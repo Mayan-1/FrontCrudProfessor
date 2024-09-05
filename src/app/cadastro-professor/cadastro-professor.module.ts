@@ -15,6 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SucessDialogModule } from '../success-dialog/sucess-dialog.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [CadastroProfessorComponent],
@@ -33,6 +34,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     SucessDialogModule,
     ReactiveFormsModule,
     MatTooltipModule,
+    MatSelectModule,
   ],
   providers: [provideNgxMask(), ProfessorService],
   exports: [CadastroProfessorComponent],

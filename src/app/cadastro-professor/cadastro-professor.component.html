@@ -217,13 +217,26 @@
     </mat-grid-tile>
 
     <mat-grid-tile>
-      <mat-form-field class="custom-form-field" appearance="outline">
+      <mat-form-field
+        class="custom-form-field select-button"
+        appearance="outline"
+      >
         <mat-label>Matéria</mat-label>
-        <input
-          matInput
-          formControlName="professorMateria"
-          matTooltip="Digite a matéria que o professor ensina"
-        />
+
+        <mat-select formControlName="professorMateria">
+          <mat-option value="Como jogar no tigrinho"
+            >Como jogar no tigrinho</mat-option
+          >
+          <mat-option value="Como jogar na blaze"
+            >Como jogar na blaze</mat-option
+          >
+          <mat-option value="Como ser prefeito">Como ser prefeito</mat-option>
+          <mat-option value="Como fazer programa"
+            >Como fazer programa</mat-option
+          >
+          <mat-option value="Como ser front-end">Como ser front-end</mat-option>
+        </mat-select>
+
         <mat-error
           *ngIf="
             cadastroProfessorForm.get('professorMateria')!.hasError('required')
@@ -231,7 +244,6 @@
         >
           Por favor, preencha a Matéria.
         </mat-error>
-        <mat-icon matSuffix>book</mat-icon>
       </mat-form-field>
     </mat-grid-tile>
   </mat-grid-list>

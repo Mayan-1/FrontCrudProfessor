@@ -45,3 +45,7 @@ mat-grid-tile {
   align-items: center;
   justify-content: center;
 }
+
+.select-button {
+  height: 90px;
+}
