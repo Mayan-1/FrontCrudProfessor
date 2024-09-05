@@ -10,6 +10,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ProfessorCriacaoDto } from '../models/professorCriacaoDto';
 
 @Component({
   selector: 'app-cadastro-professor',
@@ -87,9 +88,16 @@ export class CadastroProfessorComponent implements OnInit {
 
     console.log('chegou aqui');
 
-    const formValues = this.cadastroProfessorForm.value;
+    const professor: ProfessorCriacaoDto = {
+      nome: this.cadastroProfessorForm.value.professorNome,
+      cpf: this.cadastroProfessorForm.value.professorCpf,
+      email: this.cadastroProfessorForm.value.professorEmail,
+      senha: this.cadastroProfessorForm.value.professorSenha,
+      telefone: this.cadastroProfessorForm.value.professorTelefone,
+      materia: this.cadastroProfessorForm.value.professorMateria,
+    };
 
-    this.professorService.criarProfessor(formValues).subscribe(() => {
+    this.professorService.criarProfessor(professor).subscribe(() => {
       this.limparCampos();
       this.abrirDialog();
     });

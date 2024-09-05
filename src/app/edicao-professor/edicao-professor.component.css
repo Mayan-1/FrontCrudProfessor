@@ -34,8 +34,8 @@ mat-grid-tile {
 }
 
 .custom-button-cancelar {
-  color: #1248b2 !important;
-  border: 1px solid #1248b2 !important;
+  color: red !important;
+  border: 1px solid red !important;
   background-color: white !important;
   border-radius: 10px !important;
   width: 100%;

@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SucessDialogEdicaoComponent } from '../sucess-dialog-edicao/sucess-dialog-edicao.component';
 import { ActivatedRoute } from '@angular/router';
 import { ProfessorEdicaoDto } from '../models/professorEdicaoDto';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-edicao-professor',
@@ -27,11 +28,9 @@ export class EdicaoProfessorComponent implements OnInit {
     console.log(professorIdString);
     const professorId = +professorIdString;
     if (professorId) {
-      console.log(professorId);
       this.professorService
         .obterProfessorPorId(professorId)
         .subscribe((professor) => {
-          console.log('Dados do professor recebidos:', professor);
           this.edicaoProfessorForm.patchValue({
             professorNome: professor.nome,
             professorCpf: professor.cpf,
@@ -42,6 +41,7 @@ export class EdicaoProfessorComponent implements OnInit {
         });
     }
     this.edicaoProfessorForm = this.fb.group({
+      professorId,
       professorNome: [
         '',
         [
@@ -64,7 +64,7 @@ export class EdicaoProfessorComponent implements OnInit {
     }
 
     // const valoresFormulario = this.edicaoProfessorForm.value;
-    const professorId = this.route.snapshot.params['id'];
+    const professorId = this.edicaoProfessorForm.value.professorId;
     const professor: ProfessorEdicaoDto = {
       nome: this.edicaoProfessorForm.value.professorNome,
       cpf: this.edicaoProfessorForm.value.professorCpf,
@@ -72,19 +72,6 @@ export class EdicaoProfessorComponent implements OnInit {
       materia: this.edicaoProfessorForm.value.professorMateria,
       telefone: this.edicaoProfessorForm.value.professorTelefone,
     };
-
-    console.log(professor);
-    // console.log('Valores do formulário:', valoresFormulario);
-
-    // this.professorData = {
-    //   nome: valoresFormulario.nome,
-    //   cpf: valoresFormulario.cpf,
-    //   email: valoresFormulario.email,
-    //   materia: valoresFormulario.materia,
-    //   telefone: valoresFormulario.telefone,
-    // };
-
-    // console.log('Valores do professorData:', this.professorData);
 
     this.professorService
       .editarProfessor(professorId, professor)
@@ -94,11 +81,9 @@ export class EdicaoProfessorComponent implements OnInit {
   }
 
   deletarProfessor() {
-    const professorId = this.route.snapshot.params['id'];
-
+    const professorId = this.edicaoProfessorForm.value.professorId;
     this.professorService.deletarProfessor(professorId).subscribe(() => {
-      this.limparCampos();
-      this.abrirDialog();
+      this.abrirDialog(), this.limparCampos();
     });
   }
 
@@ -108,5 +93,18 @@ export class EdicaoProfessorComponent implements OnInit {
 
   abrirDialog() {
     this.dialog.open(SucessDialogEdicaoComponent);
+  }
+
+  abrirDialogDelete() {
+    const professorId = this.edicaoProfessorForm.value.professorId; // Certifique-se de que o ID está presente no formulário
+    if (professorId) {
+      this.dialog.open(DeleteDialogComponent, {
+        data: {
+          professorId: professorId, // Passando o ID
+        },
+      });
+    } else {
+      console.error('O ID do professor não está definido');
+    }
   }
 }

@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Confirmação</h2>
+<mat-dialog-content>
+  Você tem certeza que deseja deletar esse professor?
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button
+    mat-button
+    mat-dialog-close
+    class="button"
+    (click)="deletarProfessor()"
+  >
+    Sim
+  </button>
+
+  <button mat-button mat-dialog-close class="button">Não</button>
+</mat-dialog-actions>

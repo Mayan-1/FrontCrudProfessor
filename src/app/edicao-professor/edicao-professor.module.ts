@@ -15,6 +15,7 @@ import { SucessDialogModule } from '../success-dialog/sucess-dialog.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { EdicaoProfessorComponent } from './edicao-professor.component';
+import { DeleteDialogModule } from '../delete-dialog/delete-dialog.module';
 
 @NgModule({
   declarations: [EdicaoProfessorComponent],
@@ -33,6 +34,7 @@ import { EdicaoProfessorComponent } from './edicao-professor.component';
     SucessDialogModule,
     ReactiveFormsModule,
     MatTooltipModule,
+    DeleteDialogModule,
   ],
   providers: [provideNgxMask(), ProfessorService],
   exports: [EdicaoProfessorComponent],

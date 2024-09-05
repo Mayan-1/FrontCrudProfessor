@@ -1,6 +1,6 @@
 <form [formGroup]="edicaoProfessorForm" (ngSubmit)="editarProfessor()">
   <mat-grid-list
-    cols="2"
+    cols="1"
     [rowHeight]="90"
     class="custom-grid-list"
     gutterSize="5"
@@ -41,7 +41,14 @@
         <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
     </mat-grid-tile>
+  </mat-grid-list>
 
+  <mat-grid-list
+    cols="2"
+    [rowHeight]="90"
+    class="custom-grid-list"
+    gutterSize="5"
+  >
     <mat-grid-tile>
       <mat-form-field class="custom-form-field" appearance="outline">
         <mat-label>Email</mat-label>
@@ -87,7 +94,14 @@
         <mat-icon matSuffix>phone</mat-icon>
       </mat-form-field>
     </mat-grid-tile>
+  </mat-grid-list>
 
+  <mat-grid-list
+    cols="2"
+    [rowHeight]="90"
+    class="custom-grid-list"
+    gutterSize="5"
+  >
     <mat-grid-tile>
       <mat-form-field class="custom-form-field" appearance="outline">
         <mat-label>Cpf</mat-label>
@@ -125,11 +139,17 @@
         <mat-icon matSuffix>book</mat-icon>
       </mat-form-field>
     </mat-grid-tile>
+  </mat-grid-list>
 
-    <mat-grid-tile></mat-grid-tile>
+  <mat-grid-list
+    cols="2"
+    [rowHeight]="90"
+    class="custom-grid-list"
+    gutterSize="5"
+  >
     <mat-grid-tile>
       <button mat-raised-button class="custom-button-editar" type="submit">
-        Editar
+        Editar professor
       </button>
     </mat-grid-tile>
 
@@ -137,7 +157,7 @@
       <button
         mat-raised-button
         class="custom-button-cancelar"
-        (click)="deletarProfessor()"
+        (click)="abrirDialogDelete()"
         type="button"
       >
         Deletar professor
