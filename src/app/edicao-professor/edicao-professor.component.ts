@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ProfessorService } from '../services/professor.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SucessDialogEdicaoComponent } from '../sucess-dialog-edicao/sucess-dialog-edicao.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProfessorEdicaoDto } from '../models/professorEdicaoDto';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edicao-professor',
@@ -20,7 +20,9 @@ export class EdicaoProfessorComponent implements OnInit {
     private professorService: ProfessorService,
     private dialog: MatDialog,
     private fb: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -59,7 +61,11 @@ export class EdicaoProfessorComponent implements OnInit {
 
   editarProfessor() {
     if (this.edicaoProfessorForm.invalid) {
-      alert('Por favor, preencha todos os campos obrigatórios');
+      this.toastr.success('Por favor, preencha todos os campos', 'Erro', {
+        timeOut: 2000,
+        progressBar: true,
+        progressAnimation: 'increasing',
+      });
       return;
     }
 
@@ -76,35 +82,19 @@ export class EdicaoProfessorComponent implements OnInit {
     this.professorService
       .editarProfessor(professorId, professor)
       .subscribe(() => {
-        this.abrirDialog();
+        this.toastr.success('Professor editado com sucesso', 'Sucesso', {
+          timeOut: 2000,
+          progressBar: true,
+          progressAnimation: 'increasing',
+        });
       });
-  }
 
-  deletarProfessor() {
-    const professorId = this.edicaoProfessorForm.value.professorId;
-    this.professorService.deletarProfessor(professorId).subscribe(() => {
-      this.abrirDialog(), this.limparCampos();
-    });
+    setTimeout(() => {
+      this.router.navigate(['']);
+    }, 2000);
   }
 
   limparCampos() {
     this.edicaoProfessorForm.reset();
-  }
-
-  abrirDialog() {
-    this.dialog.open(SucessDialogEdicaoComponent);
-  }
-
-  abrirDialogDelete() {
-    const professorId = this.edicaoProfessorForm.value.professorId; // Certifique-se de que o ID está presente no formulário
-    if (professorId) {
-      this.dialog.open(DeleteDialogComponent, {
-        data: {
-          professorId: professorId, // Passando o ID
-        },
-      });
-    } else {
-      console.error('O ID do professor não está definido');
-    }
   }
 }

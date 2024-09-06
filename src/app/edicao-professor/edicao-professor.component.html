@@ -117,18 +117,31 @@
         >
           Por favor, preencha o Cpf.
         </mat-error>
-        <mat-icon matSuffix>verified_user</mat-icon>
+        <mat-icon matSuffix>assignment_ind</mat-icon>
       </mat-form-field>
     </mat-grid-tile>
 
     <mat-grid-tile>
-      <mat-form-field class="custom-form-field" appearance="outline">
+      <mat-form-field
+        class="custom-form-field select-button"
+        appearance="outline"
+      >
         <mat-label>Matéria</mat-label>
-        <input
-          matInput
-          formControlName="professorMateria"
-          matTooltip="Digite a matéria que o professor ensina"
-        />
+
+        <mat-select formControlName="professorMateria">
+          <mat-option value="Como jogar no tigrinho"
+            >Como jogar no tigrinho</mat-option
+          >
+          <mat-option value="Como jogar na blaze"
+            >Como jogar na blaze</mat-option
+          >
+          <mat-option value="Como ser prefeito">Como ser prefeito</mat-option>
+          <mat-option value="Como fazer programa"
+            >Como fazer programa</mat-option
+          >
+          <mat-option value="Como ser front-end">Como ser front-end</mat-option>
+        </mat-select>
+
         <mat-error
           *ngIf="
             edicaoProfessorForm.get('professorMateria')!.hasError('required')
@@ -136,13 +149,12 @@
         >
           Por favor, preencha a Matéria.
         </mat-error>
-        <mat-icon matSuffix>book</mat-icon>
       </mat-form-field>
     </mat-grid-tile>
   </mat-grid-list>
 
   <mat-grid-list
-    cols="2"
+    cols="1"
     [rowHeight]="90"
     class="custom-grid-list"
     gutterSize="5"
@@ -150,17 +162,6 @@
     <mat-grid-tile>
       <button mat-raised-button class="custom-button-editar" type="submit">
         Editar professor
-      </button>
-    </mat-grid-tile>
-
-    <mat-grid-tile>
-      <button
-        mat-raised-button
-        class="custom-button-cancelar"
-        (click)="abrirDialogDelete()"
-        type="button"
-      >
-        Deletar professor
       </button>
     </mat-grid-tile>
   </mat-grid-list>

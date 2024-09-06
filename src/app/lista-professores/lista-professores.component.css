@@ -13,14 +13,20 @@ mat-form-field {
   border-radius: 10px;
 }
 
-td {
-  cursor: pointer;
-}
-
 /* td:hover {
   transform: scale(1.1);
 } */
 
 .materia {
   width: fit-content;
+}
+
+.button-action {
+  cursor: pointer;
+  background-color: white;
+  border: 0;
+}
+
+.delete-button {
+  margin-left: 2px;
 }

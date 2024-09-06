@@ -197,7 +197,7 @@
 
     <mat-grid-tile>
       <mat-form-field class="custom-form-field" appearance="outline">
-        <mat-label>Cpf</mat-label>
+        <mat-label>CPF</mat-label>
         <input
           matInput
           class="form-control"
@@ -210,9 +210,9 @@
             cadastroProfessorForm.get('professorCpf')!.hasError('required')
           "
         >
-          Por favor, preencha o Cpf.
+          Por favor, preencha o CPF.
         </mat-error>
-        <mat-icon matSuffix>verified_user</mat-icon>
+        <mat-icon matSuffix>assignment_ind</mat-icon>
       </mat-form-field>
     </mat-grid-tile>
 
@@ -223,7 +223,7 @@
       >
         <mat-label>Matéria</mat-label>
 
-        <mat-select formControlName="professorMateria">
+        <mat-select formControlName="professorMateria" class="select-button">
           <mat-option value="Como jogar no tigrinho"
             >Como jogar no tigrinho</mat-option
           >
@@ -255,7 +255,11 @@
     gutterSize="5"
   >
     <mat-grid-tile>
-      <button mat-raised-button class="custom-button-cadastrar" type="submit">
+      <button
+        mat-raised-button
+        class="custom-button-cadastrar custom-button"
+        type="submit"
+      >
         Cadastrar
       </button>
     </mat-grid-tile>
@@ -263,11 +267,11 @@
     <mat-grid-tile>
       <button
         mat-raised-button
-        class="custom-button-cancelar"
+        class="custom-button-cancelar custom-button"
         (click)="limparCampos()"
         type="button"
       >
-        Cancelar
+        Limpar Campos
       </button>
     </mat-grid-tile>
   </mat-grid-list>

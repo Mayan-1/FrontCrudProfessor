@@ -5,6 +5,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [ListaProfessoresComponent],
@@ -14,6 +15,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatPaginatorModule,
     MatInputModule,
     MatSortModule,
+    MatIconModule,
   ],
   providers: [],
   exports: [ListaProfessoresComponent],

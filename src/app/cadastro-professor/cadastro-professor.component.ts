@@ -1,6 +1,5 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { ProfessorService } from '../services/professor.service';
-import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import {
   FormBuilder,
   FormGroup,
@@ -11,6 +10,9 @@ import {
 } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ProfessorCriacaoDto } from '../models/professorCriacaoDto';
+import { ToastrService } from 'ngx-toastr';
+import { timeout } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-professor',
@@ -23,9 +25,11 @@ export class CadastroProfessorComponent implements OnInit {
   hideConfirmacao = true;
   cadastroProfessorForm!: FormGroup;
   constructor(
+    private router: Router,
     private professorService: ProfessorService,
     private dialog: MatDialog,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastr: ToastrService
   ) {}
 
   equalsTo(otherField: string): ValidatorFn {
@@ -82,11 +86,11 @@ export class CadastroProfessorComponent implements OnInit {
 
   criarProfessor() {
     if (this.cadastroProfessorForm.invalid) {
-      alert('Por favor, preencha todos os campos obrigatórios corretamente.');
+      this.toastr.error('Por favor, preencha todos os campos', 'Erro', {
+        timeOut: 2000,
+      });
       return;
     }
-
-    console.log('chegou aqui');
 
     const professor: ProfessorCriacaoDto = {
       nome: this.cadastroProfessorForm.value.professorNome,
@@ -98,16 +102,19 @@ export class CadastroProfessorComponent implements OnInit {
     };
 
     this.professorService.criarProfessor(professor).subscribe(() => {
-      this.limparCampos();
-      this.abrirDialog();
+      this.toastr.success('Professor cadastrado com sucesso', 'Sucesso', {
+        timeOut: 2000,
+        progressBar: true,
+        progressAnimation: 'increasing',
+      });
     });
+
+    setTimeout(() => {
+      this.router.navigate(['']);
+    }, 2000);
   }
 
   limparCampos() {
     this.cadastroProfessorForm.reset();
-  }
-
-  abrirDialog() {
-    this.dialog.open(SuccessDialogComponent);
   }
 }

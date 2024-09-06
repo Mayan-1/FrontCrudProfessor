@@ -11,11 +11,13 @@ import { RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProfessorService } from '../services/professor.service';
 import { MatDialogModule } from '@angular/material/dialog';
-import { SucessDialogModule } from '../success-dialog/sucess-dialog.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { EdicaoProfessorComponent } from './edicao-professor.component';
 import { DeleteDialogModule } from '../delete-dialog/delete-dialog.module';
+import { MatSelectModule } from '@angular/material/select';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [EdicaoProfessorComponent],
@@ -31,10 +33,12 @@ import { DeleteDialogModule } from '../delete-dialog/delete-dialog.module';
     FormsModule,
     HttpClientModule,
     MatDialogModule,
-    SucessDialogModule,
     ReactiveFormsModule,
     MatTooltipModule,
     DeleteDialogModule,
+    MatSelectModule,
+    ToastrModule,
+    BrowserAnimationsModule,
   ],
   providers: [provideNgxMask(), ProfessorService],
   exports: [EdicaoProfessorComponent],
