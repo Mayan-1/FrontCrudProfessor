@@ -1,0 +1,23 @@
+mat-grid-tile {
+    background: lightblue;
+  }
+  
+.tile-img{
+    width: 30% !important;
+    background-color: blue;
+    position: relative; /* Necessário para que os filhos absolutos possam se posicionar corretamente */
+    overflow: visible; /* Permite que o conteúdo interno ultrapasse o grid */
+}
+
+.tile-form{
+  
+    background-color: white;
+}
+
+.form{
+    margin-right: 300px;
+}
+.img-login{
+    width: 100%;
+    margin-left: 500px;
+}

@@ -8,8 +8,10 @@ import { CadastroProfessorModule } from './cadastro-professor/cadastro-professor
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { EdicaoProfessorModule } from './edicao-professor/edicao-professor.module';
 import { ListaProfessoresModule } from './lista-professores/lista-professores.module';
+import { TelaLoginModule } from './tela-login/tela-login.module';
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -19,6 +21,7 @@ import { ListaProfessoresModule } from './lista-professores/lista-professores.mo
     NoopAnimationsModule,
     EdicaoProfessorModule,
     ListaProfessoresModule,
+    TelaLoginModule
   ],
   providers: [],
   bootstrap: [AppComponent],
