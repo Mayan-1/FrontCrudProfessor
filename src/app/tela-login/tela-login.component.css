@@ -1,23 +1,76 @@
 mat-grid-tile {
-    background: lightblue;
-  }
-  
-.tile-img{
-    width: 30% !important;
-    background-color: blue;
-    position: relative; /* Necessário para que os filhos absolutos possam se posicionar corretamente */
-    overflow: visible; /* Permite que o conteúdo interno ultrapasse o grid */
+    background: blue;
+    overflow: visible; /* Permite que o conteúdo ultrapasse os limites do tile */
+    
 }
 
-.tile-form{
-  
+.img-wrapper {
+    position: relative; /* Necessário para o posicionamento absoluto da imagem */
+}
+
+.img-login {
+    position: absolute; /* Posiciona a imagem de forma absoluta */
+    top: -20px; /* Ajuste para a posição desejada */
+    left: -20px; /* Ajuste para a posição desejada */
+    width: 100%; /* Ajuste o tamanho conforme necessário */
+    max-width: none; /* Permite que a imagem exceda o limite padrão */
+    z-index: 10; /* Garante que a imagem fique sobre o grid */
+    margin-left: 200px;
+    margin-top: 150px;
+}
+
+.tile-form {
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid #1248b2 !important;
+    width: 500px;
+    height: 500px ;
+    margin-bottom: 150px;
+    border-radius: 10px;
+    box-shadow: 5px 5px rgb(194, 194, 194);
+
+}
+
+.custom-button-cadastrar {
+    border-radius: 10px !important;
+    width: 40%;
+    align-self: center;
+}
+.tile-img 
+{
+    border-radius: 20px;
+    background-color: #1248b2;
+
+}
+.imagi{
+    width: 60%;
+    margin-top: 20px;
 }
 
 .form{
-    margin-right: 300px;
+    width: 400px;
+    margin-top: 10px;
 }
-.img-login{
-    width: 100%;
-    margin-left: 500px;
+
+.custom-form-senha{
+    margin-top: -15px;
+}
+.btn-logar{
+    background-color: #1248b2 !important;
+    color: white !important;
+    width: 400px;
+}
+.link{
+    text-decoration: none;
 }
