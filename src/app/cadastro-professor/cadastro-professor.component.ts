@@ -7,6 +7,7 @@ import {
   AbstractControl,
   ValidatorFn,
   FormControl,
+  ValidationErrors,
 } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ProfessorCriacaoDto } from '../models/professorCriacaoDto';
@@ -52,7 +53,14 @@ export class CadastroProfessorComponent implements OnInit {
   ngOnInit() {
     this.cadastroProfessorForm = this.fb.group({
       professorNome: ['', [Validators.required, Validators.minLength(3)]],
-      professorCpf: ['', Validators.required],
+      professorCpf: [
+        '',
+        [
+          Validators.required,
+          // Validators.pattern('\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}'),
+          this.cpfValidator,
+        ],
+      ],
       professorEmail: ['', [Validators.required, Validators.email]],
       confirmacaoEmail: [
         '',
@@ -79,7 +87,14 @@ export class CadastroProfessorComponent implements OnInit {
           Validators.maxLength(15),
         ],
       ],
-      professorTelefone: ['', Validators.required],
+      professorTelefone: [
+        '',
+        [
+          Validators.required,
+          // Validators.pattern('[(][0-9]{2}[)][ ][9][0-9]{4}[-][0-9]{4}'),
+          this.telefoneValidator,
+        ],
+      ],
       professorMateria: ['', Validators.required],
     });
   }
@@ -116,5 +131,19 @@ export class CadastroProfessorComponent implements OnInit {
 
   limparCampos() {
     this.cadastroProfessorForm.reset();
+  }
+
+  telefoneValidator(control: AbstractControl): ValidationErrors | null {
+    const valor = control.value ? control.value.replace(/\D/g, '') : '';
+    const telefoneValido = /^\d{11}$/.test(valor);
+
+    return telefoneValido ? null : { pattern: true };
+  }
+
+  cpfValidator(control: AbstractControl): ValidationErrors | null {
+    const valor = control.value ? control.value.replace(/\D/g, '') : '';
+    const cpfValido = valor.length === 11;
+
+    return cpfValido ? null : { pattern: true };
   }
 }

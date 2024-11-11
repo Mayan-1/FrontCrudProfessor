@@ -13,6 +13,7 @@
           type="text"
           formControlName="professorNome"
           matTooltip="O nome deve conter no mínimo 3 caracteres"
+          id="nome"
         />
         <mat-error
           *ngIf="
@@ -46,6 +47,7 @@
           type="email"
           formControlName="professorEmail"
           matTooltip="exemplo@exemplo.com"
+          id="email"
         />
         <mat-error
           *ngIf="
@@ -56,6 +58,7 @@
         </mat-error>
         <mat-error
           *ngIf="cadastroProfessorForm.get('professorEmail')!.hasError('email')"
+          id="mensagemEmailInvalido"
         >
           Por favor, digite um email válido.
         </mat-error>
@@ -71,6 +74,8 @@
           type="email"
           formControlName="confirmacaoEmail"
           matTooltip="O email deve ser o mesmo do campo anterior"
+          type="confirmarcaoEmail"
+          id="confirmacaoEmail"
         />
         <mat-error
           *ngIf="
@@ -83,6 +88,7 @@
           *ngIf="
             cadastroProfessorForm.get('confirmacaoEmail')!.hasError('equalsTo')
           "
+          id="mesmoEmailCampoAnterior"
         >
           Por favor, digite o mesmo email do campo anterior.
         </mat-error>
@@ -99,6 +105,7 @@
           [type]="hideSenha ? 'password' : 'text'"
           formControlName="professorSenha"
           matTooltip="A senha deve conter no mínimo 6 caracteres"
+          id="senha"
         />
         <button
           mat-icon-button
@@ -122,7 +129,9 @@
             cadastroProfessorForm.get('professorSenha')!.hasError('minlength')
           "
         >
-          A senha deve conter no mínimo 6 caracteres
+          <span id="mensagemErroTamanhoSenha"
+            >A senha deve conter no mínimo 6 caracteres</span
+          >
         </mat-error>
       </mat-form-field>
     </mat-grid-tile>
@@ -135,11 +144,13 @@
           [type]="hideConfirmacao ? 'password' : 'text'"
           formControlName="confirmacaoSenha"
           matTooltip="A senha deve ser a mesma do campo anterior"
+          id="confirmacaoSenha"
         />
         <mat-error
           *ngIf="
             cadastroProfessorForm.get('confirmacaoSenha')!.hasError('equalsTo')
           "
+          id="mesmaSenhaCampoAnterior"
         >
           Por favor, digite a mesma senha do campo anterior.
         </mat-error>
@@ -183,6 +194,7 @@
           mask="(00) 00000-0000"
           formControlName="professorTelefone"
           matTooltip="(00) 00000-0000"
+          id="telefone"
         />
         <mat-error
           *ngIf="
@@ -190,6 +202,14 @@
           "
         >
           Por favor, preencha o Telefone.
+        </mat-error>
+        <mat-error
+          *ngIf="
+            cadastroProfessorForm.get('professorTelefone')!.hasError('pattern')
+          "
+          id="mensagemTelefoneInvalido"
+        >
+          Telefone inválido.
         </mat-error>
         <mat-icon matSuffix>phone</mat-icon>
       </mat-form-field>
@@ -204,6 +224,7 @@
           mask="000.000.000-00"
           formControlName="professorCpf"
           matTooltip="000.000.000-00"
+          id="cpf"
         />
         <mat-error
           *ngIf="
@@ -212,6 +233,12 @@
         >
           Por favor, preencha o CPF.
         </mat-error>
+        <mat-error
+          *ngIf="cadastroProfessorForm.get('professorCpf')!.hasError('pattern')"
+          id="mensagemCpfInvalido"
+        >
+          Cpf inválido.</mat-error
+        >
         <mat-icon matSuffix>assignment_ind</mat-icon>
       </mat-form-field>
     </mat-grid-tile>
@@ -220,6 +247,7 @@
       <mat-form-field
         class="custom-form-field select-button"
         appearance="outline"
+        id="materia"
       >
         <mat-label>Matéria</mat-label>
 
@@ -231,7 +259,7 @@
             >Como jogar na blaze</mat-option
           >
           <mat-option value="Como ser prefeito">Como ser prefeito</mat-option>
-          <mat-option value="Como fazer programa"
+          <mat-option value="Como fazer programa" id="opcao4"
             >Como fazer programa</mat-option
           >
           <mat-option value="Como ser front-end">Como ser front-end</mat-option>
@@ -251,6 +279,7 @@
           *ngIf="
             cadastroProfessorForm.get('professorMateria')!.hasError('required')
           "
+          id="mensagemMateriaInvalida"
         >
           Por favor, preencha a Matéria.
         </mat-error>
@@ -269,6 +298,7 @@
         mat-raised-button
         class="custom-button-cadastrar custom-button"
         type="submit"
+        id="btn-cadastrar"
       >
         Cadastrar
       </button>
